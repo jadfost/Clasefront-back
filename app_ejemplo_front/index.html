@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div>
+        <h1>Listado de estudiantes</h1>
+        <div class="contentButtons contentButtons-flex-end">
+            <button class="contentButtons__button" onclick="crear()">Crear</button>
+        </div>
+        <table id="listaEstudiantes" class="tabla">
+            <thead>
+                <tr>
+                    <th class="tabla__th tabla__th-22W">Código</th>
+                    <th class="tabla__th tabla__th-22W">Nombre</th>
+                    <th class="tabla__th tabla__th-15W">Edad</th>
+                    <th class="tabla__th">Operaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="3">No hay datos registrados</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="popupControll popupControll-cerrar">
+        <div id="controlForm" class="popupControll__content">
+            <h2 class="popupControll__titulo">Registrar estudiante</h2>
+            <form class="popupControll__formulario" onsubmit="saveDataForm(event)">
+                <div class="control-input">
+                    <label class="control-input__etiqueta">Código:</label>
+                    <input class="control-input__input" name="codigo" id="codigo" type="text" value="" required>
+                </div>
+                <div class="control-input">
+                    <label class="control-input__etiqueta">Nombres:</label>
+                    <input class="control-input__input" name="nombres" id="nombres" type="text" value="" required>
+                </div>
+                <div class="control-input">
+                    <label class="control-input__etiqueta">Apellidos:</label>
+                    <input class="control-input__input" name="apellidos" id="apellidos" type="text" value="" required>
+                </div>
+                <div class="control-input">
+                    <label class="control-input__etiqueta">Edad:</label>
+                    <input class="control-input__input" name="edad" id="edad" type="number" value="" required>
+                </div>
+                <div class="contentButtons">
+                    <button type="submit" class="contentButtons__button contentButtons__button-guardar">Guardar</button>
+                    <button type="button" class="contentButtons__button contentButtons__button-cancelar"
+                        onclick="onClickCancelar()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="popupControll popupControll-cerrar">
+        <div id="controlDetail" class="popupControll__content">
+            <h2>Detalle datos estudiante</h2>
+            <div class="control-detail">
+                <label class="control-detail__label">Código:</label>
+                <label id="codigoLb" class="control-detail__valor"></label>
+            </div>
+            <div class="control-detail">
+                <label class="control-detail__label">Nombres:</label>
+                <label id="nombresLb" class="control-detail__valor"></label>
+            </div>
+            <div class="control-detail">
+                <label class="control-detail__label">Apellidos:</label>
+                <label id="apellidosLb" class="control-detail__valor"></label>
+            </div>
+            <div class="control-detail">
+                <label class="control-detail__label">Edad:</label>
+                <label id="edadLb" class="control-detail__valor"></label>
+            </div>
+            <div class="contentButtons">
+                <button type="button" class="contentButtons__button contentButtons__button-cancelar"
+                    onclick="onClickCerrar()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popupControll popupControll-cerrar">
+        <div class="popupControll__content">
+            <h2 class="popupControll__titulo">Mensaje de confirmación</h2>
+            <p class="popupControll__msg">¿Desea eliminar este registro?</p>
+            <div class="contentButtons">
+                <button type="button" class="contentButtons__button contentButtons__button-si"
+                    onclick="onClickSi()">SI</button>
+                <button type="button" class="contentButtons__button contentButtons__button-no"
+                    onclick="onClickNo()">NO</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
