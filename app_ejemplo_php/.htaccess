@@ -2,4 +2,4 @@ RewriteEngine On
 RewriteBase /
 options +FollowSymLinks
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule .* clase/app_ejemplo_php/index.php/$0 [L]
+RewriteRule .* clase/Clasefront-back/app_ejemplo_php/index.php/$0 [L]

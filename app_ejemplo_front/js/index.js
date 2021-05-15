@@ -1,5 +1,5 @@
 
-const urlApi = "http://localhost/clase/app_ejemplo_php/estudiantes";
+const urlApi = "http://localhost/clase/Clasefront-back/app_ejemplo_php/estudiantes";
 let listaEstudiantes = [];
 let idEstudiante = 0;
 let estudiante = null;

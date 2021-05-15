@@ -6,10 +6,10 @@ use mysqli;
 
 class ConexionDB
 {
-    private $servidor = 'localhost:3306';
+    private $servidor = '127.0.0.1';
     private $nombreDB = 'clase_prueba_db';
     private $usuarioDB = 'root';
-    private $passwordDB = '';
+    private $passwordDB = '1234';
 
     private $conn;
 
