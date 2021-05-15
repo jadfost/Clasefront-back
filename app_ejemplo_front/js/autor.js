@@ -4,7 +4,7 @@ let listaAutores = [];
 let idAutor = 0;
 let autor = null;
 
-function indexApi() {
+function autoresApi() {
     let response = null;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -18,7 +18,7 @@ function indexApi() {
     xhttp.open("GET", urlApi, true);
     xhttp.send();
 }
-indexApi();
+autoresApi();
 
 function asignarDatosTablaHtml() {
     let html = '';
@@ -77,7 +77,7 @@ function save(data) {
         if (this.readyState == 4 && this.status == 200) {
             reponse = JSON.parse(this.response);
             console.log(reponse);
-            indexApi();
+            autoresApi();
             onClickCancelar();
         }
     };
@@ -125,7 +125,7 @@ function onClickSi() {
             console.log(response);
             idAutor = 0;
             autor = null;
-            indexApi();
+            autoresApi();
             document.getElementsByClassName('popupControll')[2].classList.add('popupControll-cerrar');
         }
     };
