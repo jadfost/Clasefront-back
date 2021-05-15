@@ -25,17 +25,14 @@ class AutorController extends BaseController
     {
         $modelValidation = new Autor();
         $data = $modelValidation->where([
-            ['codigo', '=', $request['codigo']]
+            ['nombre', '=', $request['nombre']]
         ]);
         if (count($data) > 0) {
-            return "El código ya se cuentra registrado";
+            return "El nombre ya se cuentra registrado";
         }
 
         $model = new Autor();
-        $model->set('nombres', $request['nombres']);
-        $model->set('apellidos',  $request['apellidos']);
-        $model->set('edad',  $request['edad']);
-        $model->set('codigo',  $request['codigo']);
+        $model->set('nombre', $request['nombre']);
         $status = $model->save();
         return $status ? 'Registro guardado' : 'Error al guardar el registro';
     }
@@ -45,19 +42,16 @@ class AutorController extends BaseController
 
         $modelValidation = new Autor();
         $data = $modelValidation->where([
-            ['codigo', '=', $request['codigo']],
+            ['nombre', '=', $request['nombre']],
             ['id', '<>', $id]
         ]);
         if (count($data) > 0) {
-            return "El código ya se cuentra registrado";
+            return "El nombre ya se cuentra registrado";
         }
 
         $model = new Autor();
         $model->set('id', $id);
-        $model->set('nombres', $request['nombres']);
-        $model->set('apellidos',  $request['apellidos']);
-        $model->set('edad',  $request['edad']);
-        $model->set('codigo',  $request['codigo']);
+        $model->set('nombre', $request['nombre']);
         $status = $model->update();
         return $status ? 'Registro actualizado' : 'Error al actualizar el registro';
     }
