@@ -9,19 +9,21 @@ require_once dirname(__DIR__) . '/api/response.php';
 $uriRelativeApp =  '/clase/Clasefront-back/app_ejemplo_php/';
 
 $uriClass = [
-    "estudiantes" => [
+    "editoriales" => [
         'model' => 'models/estudiante.php',
         'controller' => 'controllers/estudiante_controller.php'
     ],
-    "docentes" => [
-        'model' => 'models/docente.php',
-        'controller' => 'controllers/docente_controller.php'
+
+    "autores" => [
+        'model' => 'models/autor.php',
+        'controller' => 'controllers/autor_controller.php'
     ],
 ];
 
 $controllers = [
     "estudiantes" => 'controllers\EstudianteController',
-    "decentes" => 'controllers\DocenteController'
+
+    "autores" => 'controllers\AutorController'
 ];
 
 
