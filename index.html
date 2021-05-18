@@ -11,18 +11,16 @@
 
 <body>
     <div>
-        <h1>Listado de Libros</h1>
+        <h1>Listado de estudiantes</h1>
         <div class="contentButtons contentButtons-flex-end">
             <button class="contentButtons__button" onclick="crear()">Crear</button>
         </div>
-        <table id="listaAutores" class="tabla">
+        <table id="listaEstudiantes" class="tabla">
             <thead>
                 <tr>
+                    <th class="tabla__th tabla__th-22W">Código</th>
                     <th class="tabla__th tabla__th-22W">Nombre</th>
-                    <th class="tabla__th tabla__th-22W">Descripcion</th>
-                    <th class="tabla__th tabla__th-15W">fecha_publicacion</th>
-                    <th class="tabla__th tabla__th-22W">Edicion</th>
-                    <th class="tabla__th tabla__th-22W">editorial_id</th>
+                    <th class="tabla__th tabla__th-15W">Edad</th>
                     <th class="tabla__th">Operaciones</th>
                 </tr>
             </thead>
@@ -35,27 +33,23 @@
     </div>
     <div class="popupControll popupControll-cerrar">
         <div id="controlForm" class="popupControll__content">
-            <h2 class="popupControll__titulo">Registrar Autores</h2>
+            <h2 class="popupControll__titulo">Registrar estudiante</h2>
             <form class="popupControll__formulario" onsubmit="saveDataForm(event)">
+                <div class="control-input">
+                    <label class="control-input__etiqueta">Código:</label>
+                    <input class="control-input__input" name="codigo" id="codigo" type="text" value="" required>
+                </div>
                 <div class="control-input">
                     <label class="control-input__etiqueta">Nombres:</label>
                     <input class="control-input__input" name="nombres" id="nombres" type="text" value="" required>
                 </div>
                 <div class="control-input">
-                    <label class="control-input__etiqueta">Descripcion:</label>
-                    <input class="control-input__input" name="Descripcions" id="Descripcions" type="text" value="" required>
+                    <label class="control-input__etiqueta">Apellidos:</label>
+                    <input class="control-input__input" name="apellidos" id="apellidos" type="text" value="" required>
                 </div>
                 <div class="control-input">
-                    <label class="control-input__etiqueta">Fecha_publicacion:</label>
-                    <input class="control-input__input" name="fecha_publicacions" id="fecha_publicacions" type="text" value="" required>
-                </div>
-                <div class="control-input">
-                    <label class="control-input__etiqueta">Edicion:</label>
-                    <input class="control-input__input" name="edicions" id="edicions" type="number" value="" required>
-                </div>
-                <div class="control-input">
-                    <label class="control-input__etiqueta">Editorial_id:</label>
-                    <input class="control-input__input" name="editorial_ids" id="editorial_ids" type="number" value="" required>
+                    <label class="control-input__etiqueta">Edad:</label>
+                    <input class="control-input__input" name="edad" id="edad" type="number" value="" required>
                 </div>
                 <div class="contentButtons">
                     <button type="submit" class="contentButtons__button contentButtons__button-guardar">Guardar</button>
@@ -68,26 +62,22 @@
 
     <div class="popupControll popupControll-cerrar">
         <div id="controlDetail" class="popupControll__content">
-            <h2>Detalle datos Autores</h2>
+            <h2>Detalle datos estudiante</h2>
+            <div class="control-detail">
+                <label class="control-detail__label">Código:</label>
+                <label id="codigoLb" class="control-detail__valor"></label>
+            </div>
             <div class="control-detail">
                 <label class="control-detail__label">Nombres:</label>
-                <label id="nombreLb" class="control-detail__valor"></label>
+                <label id="nombresLb" class="control-detail__valor"></label>
             </div>
             <div class="control-detail">
-                <label class="control-detail__label">Descripcion:</label>
-                <label id="DescripcionLb" class="control-detail__valor"></label>
+                <label class="control-detail__label">Apellidos:</label>
+                <label id="apellidosLb" class="control-detail__valor"></label>
             </div>
             <div class="control-detail">
-                <label class="control-detail__label">Fecha_publicacion:</label>
-                <label id="fecha_publicacionLb" class="control-detail__valor"></label>
-            </div>
-            <div class="control-detail">
-                <label class="control-detail__label">Edicion:</label>
-                <label id="edicionLb" class="control-detail__valor"></label>
-            </div>
-            <div class="control-detail">
-                <label class="control-detail__label">Editorial_id:</label>
-                <label id="editorial_idLb" class="control-detail__valor"></label>
+                <label class="control-detail__label">Edad:</label>
+                <label id="edadLb" class="control-detail__valor"></label>
             </div>
             <div class="contentButtons">
                 <button type="button" class="contentButtons__button contentButtons__button-cancelar"
@@ -108,7 +98,7 @@
             </div>
         </div>
     </div>
-    <script src="js/libro.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

@@ -1,31 +1,33 @@
 
-const urlApi = "http://localhost/clase/Clasefront-back/app_ejemplo_php/libros";
-let listaLibros = [];
-let idLibro = 0;
-let libro = null;
+const urlApi = "http://localhost/clase/app_ejemplo_php/estudiantes";
+let listaEstudiantes = [];
+let idEstudiante = 0;
+let estudiante = null;
 
-function librosApi() {
+function indexApi() {
     let response = null;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             response = JSON.parse(this.response);
             console.log(response);
-            listaLibros = response.data;
+            listaEstudiantes = response.data;
             asignarDatosTablaHtml();
         }
     };
     xhttp.open("GET", urlApi, true);
     xhttp.send();
 }
-librosApi();
+indexApi();
 
 function asignarDatosTablaHtml() {
     let html = '';
-    for (let item of listaLibros) {
+    for (let item of listaEstudiantes) {
         console.log(item);
         html += '<tr>';
-        html += '    <td>' + item.nombre + '</td>';
+        html += '    <td>' + item.codigo + '</td>';
+        html += '    <td>' + item.nombres + ' ' + item.apellidos + '</td>';
+        html += '    <td>' + item.edad + '</td>';
         html += '    <td>';
         html += '        <div class="contentButtons">';
         html += '           <button class="contentButtons__button contentButtons__button-verde" onclick="ver(' + item.id + ')">Ver detalle</button>';
@@ -45,7 +47,7 @@ function asignarDatosTablaHtml() {
         html += '    <td class="3">No hay datos registrados</td>';
         html += '</tr>';
     }
-    const element = document.getElementById('listaLibros').getElementsByTagName('tbody')[0];
+    const element = document.getElementById('listaEstudiantes').getElementsByTagName('tbody')[0];
     element.innerHTML = html;
 }
 
@@ -56,21 +58,20 @@ function datailApi() {
         if (this.readyState == 4 && this.status == 200) {
             response = JSON.parse(this.response);
             console.log(response);
-            libro = response.data;
+            estudiante = response.data;
         }
     };
-    xhttp.open("GET", urlApi + '/' + idLibro, false);
+    xhttp.open("GET", urlApi + '/' + idEstudiante, false);
     xhttp.send();
 }
 
 
 function saveDataForm(event) {
     event.preventDefault();
-    let data = '&nombres=' + document.getElementById('nombre').value;
-    data += '&descripcions=' + document.getElementById('descripcion').value;
-    data += '&fecha_publicacions=' + document.getElementById('fecha_publicacion').value;
-    data += '&edicions=' + document.getElementById('edicion').value;
-    data += '&editorial_ids=' + document.getElementById('editorial_id').value;
+    let data = 'codigo=' + document.getElementById('codigo').value;
+    data += '&nombres=' + document.getElementById('nombres').value;
+    data += '&apellidos=' + document.getElementById('apellidos').value;
+    data += '&edad=' + document.getElementById('edad').value;
     save(data);
 }
 
@@ -81,50 +82,48 @@ function save(data) {
         if (this.readyState == 4 && this.status == 200) {
             reponse = JSON.parse(this.response);
             console.log(reponse);
-            librosApi();
+            indexApi();
             onClickCancelar();
         }
     };
-    let param = idLibro > 0 ? '/' + idLibro : '';
-    let metodo = idLibro > 0 ? 'PUT' : 'POST';
+    let param = idEstudiante > 0 ? '/' + idEstudiante : '';
+    let metodo = idEstudiante > 0 ? 'PUT' : 'POST';
     xhttp.open(metodo, urlApi + param, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(data);
 }
 
 function crear() {
-    idLibro = 0;
-    libro = null;
+    idEstudiante = 0;
+    estudiante = null;
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
-    elementTitulo.innerText = 'Registrar datos libro';
-    document.getElementById('nombre').value = '';
-    document.getElementById('descripcion').value = '';
-    document.getElementById('fecha_publicacion').value = '';
-    document.getElementById('edicion').value = '';
-    document.getElementById('editorial_id').value = '';
+    elementTitulo.innerText = 'Registrar datos estudiante';
+    document.getElementById('codigo').value = '';
+    document.getElementById('nombres').value = '';
+    document.getElementById('apellidos').value = '';
+    document.getElementById('edad').value = '';
     document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
 }
 
 function modificar(id) {
     console.log(id);
-    idLibro = id;
-    libro = null;
+    idEstudiante = id;
+    estudiante = null;
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
-    elementTitulo.innerText = 'Modificar datos libro';
+    elementTitulo.innerText = 'Modificar datos estudiante';
     datailApi();
-    if (libro != null) {
-        document.getElementById('nombre').value = libro.nombre;
-        document.getElementById('descripcion').value = libro.descripcion;
-        document.getElementById('fecha_publicacion').value = libro.fecha_publicacion;
-        document.getElementById('edicion').value = libro.edicion;
-        document.getElementById('editorial_id').value = libro.editorial_id;
+    if (estudiante != null) {
+        document.getElementById('codigo').value = estudiante.codigo;
+        document.getElementById('nombres').value = estudiante.nombres;
+        document.getElementById('apellidos').value = estudiante.apellidos;
+        document.getElementById('edad').value = estudiante.edad;
         document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
     }
 }
 
 function eliminar(id) {
     console.log(id);
-    idLibro = id;
+    idEstudiante = id;
     document.getElementsByClassName('popupControll')[2].classList.remove('popupControll-cerrar');
 }
 
@@ -135,13 +134,13 @@ function onClickSi() {
         if (this.readyState == 4 && this.status == 200) {
             response = JSON.parse(this.response);
             console.log(response);
-            idLibro = 0;
-            libro = null;
-            librosApi();
+            idEstudiante = 0;
+            estudiante = null;
+            indexApi();
             document.getElementsByClassName('popupControll')[2].classList.add('popupControll-cerrar');
         }
     };
-    xhttp.open("DELETE", urlApi + '/' + idLibro, false);
+    xhttp.open("DELETE", urlApi + '/' + idEstudiante, false);
     xhttp.send();
 }
 
@@ -151,15 +150,14 @@ function onClickNo() {
 
 function ver(id) {
     console.log(id);
-    idLibro = id;
-    libro = null;
+    idEstudiante = id;
+    estudiante = null;
     datailApi();
-    if (libro != null) {
-        document.getElementById('nombreLb').innerText = libro.nombre;
-        document.getElementById('descripcionLb').innerText = libro.descripcion;
-        document.getElementById('fecha_publicacionLb').innerText = libro.fecha_publicacion;
-        document.getElementById('edicionLb').innerText = libro.edicion;
-        document.getElementById('editorial_idLb').innerText = libro.editorial_id;
+    if (estudiante != null) {
+        document.getElementById('codigoLb').innerText = estudiante.codigo;
+        document.getElementById('nombresLb').innerText = estudiante.nombres;
+        document.getElementById('apellidosLb').innerText = estudiante.apellidos;
+        document.getElementById('edadLb').innerText = estudiante.edad;
         document.getElementsByClassName('popupControll')[1].classList.remove('popupControll-cerrar');
     }
 }
