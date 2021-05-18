@@ -1,18 +1,18 @@
 <?php
 
-use controllers\AutorController;
-use models\autor;
+use controllers\EditorialController;
+use models\Editorial;
 
 require_once dirname(__DIR__) . '/../utils/model_util.php';
 require_once dirname(__DIR__) . '/../db/conexion_db.php';
 require_once dirname(__DIR__) . '/../models/model.php';
-require_once dirname(__DIR__) . '/../models/autor.php';
+require_once dirname(__DIR__) . '/../models/editorial.php';
 require_once dirname(__DIR__) . '/../controllers/base_controller.php';
-require_once dirname(__DIR__) . '/../controllers/autor_controller.php';
+require_once dirname(__DIR__) . '/../controllers/editorial_controller.php';
 
-$autorController = new AutorController();
-$autor = empty($_GET['id']) ? new Autor() : $autorController->detail($_GET['id']);
-$titulo = empty($_GET['id']) ? 'Registrar estudiante' : 'Modificar estudiante';
+$editorialController = new EditorialController();
+$editorial = empty($_GET['id']) ? new Editorial() : $editorialController->detail($_GET['id']);
+$titulo = empty($_GET['id']) ? 'Registrar Editorial' : 'Modificar Editorial';
 ?>
 
 <!DOCTYPE html>
@@ -24,19 +24,19 @@ $titulo = empty($_GET['id']) ? 'Registrar estudiante' : 'Modificar estudiante';
 </head>
 
 <body>
-    <a href="index.php?page=autores">Volver</a>
+    <a href="index.php?page=editoriales">Volver</a>
     <div>
         <h1><?php echo $titulo; ?></h1>
-        <form action="index.php?page=autores&view=save" method="POST">
+        <form action="index.php?page=editoriales&view=save" method="POST">
             <?php
             if (!empty($_GET['id'])) {
-                echo '<input name="id" id="id" type="hidden" value="' . $autor->get('id') . '">';
+                echo '<input name="id" id="id" type="hidden" value="' . $editorial->get('id') . '">';
             }
             ?>
 
             <div>
                 <label>Nombres:</label>
-                <input name="nombre" id="nombre" type="text" value="<?php echo $autor->get('nombre'); ?>" required>
+                <input name="nombre" id="nombre" type="text" value="<?php echo $editorial->get('nombre'); ?>" required>
             </div>
             <div>
                 <button type="submit">Guardar</button>

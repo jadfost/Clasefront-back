@@ -9,8 +9,8 @@ require_once dirname(__DIR__) . '/../models/editorial.php';
 require_once dirname(__DIR__) . '/../controllers/base_controller.php';
 require_once dirname(__DIR__) . '/../controllers/editorial_controller.php';
 
-$autorController = new AutorController();
-$estado = $autorController->delete($_GET['id']);
+$editorialController = new EditorialController();
+$estado = $editorialController->delete($_GET['id']);
 ?>
 
 
@@ -28,7 +28,7 @@ $estado = $autorController->delete($_GET['id']);
         <p>
             <?php echo $estado; ?>
         </p>
-        <a href="index.php?page=autores">Volver</a>
+        <a href="index.php?page=editoriales">Volver</a>
     </div>
 </body>
 
