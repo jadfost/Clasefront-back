@@ -10,8 +10,8 @@ $uriRelativeApp =  '/clase/Clasefront-back/app_ejemplo_php/';
 
 $uriClass = [
     "editoriales" => [
-        'model' => 'models/estudiante.php',
-        'controller' => 'controllers/estudiante_controller.php'
+        'model' => 'models/editorial.php',
+        'controller' => 'controllers/editorial_controller.php'
     ],
 
     "autores" => [
@@ -21,7 +21,7 @@ $uriClass = [
 ];
 
 $controllers = [
-    "estudiantes" => 'controllers\EstudianteController',
+    "editoriales" => 'controllers\EditorialController',
 
     "autores" => 'controllers\AutorController'
 ];
