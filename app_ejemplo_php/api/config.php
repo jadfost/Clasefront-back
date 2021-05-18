@@ -18,12 +18,19 @@ $uriClass = [
         'model' => 'models/autor.php',
         'controller' => 'controllers/autor_controller.php'
     ],
+
+    "libros" => [
+        'model' => 'models/libro.php',
+        'controller' => 'controllers/libro_controller.php'
+    ],
 ];
 
 $controllers = [
     "editoriales" => 'controllers\EditorialController',
 
     "autores" => 'controllers\AutorController'
+
+    "libros" => 'controllers\LibroController'
 ];
 
 
