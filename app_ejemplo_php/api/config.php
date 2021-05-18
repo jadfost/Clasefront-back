@@ -23,6 +23,11 @@ $uriClass = [
         'model' => 'models/libro.php',
         'controller' => 'controllers/libro_controller.php'
     ],
+
+    "temas" => [
+        'model' => 'models/tema.php',
+        'controller' => 'controllers/tema_controller.php'
+    ],
 ];
 
 $controllers = [
@@ -31,6 +36,7 @@ $controllers = [
     "autores" => 'controllers\AutorController'
 
     "libros" => 'controllers\LibroController'
+    "temas" => 'controllers\TemaController'
 ];
 
 
