@@ -45,7 +45,7 @@ function asignarDatosTablaHtml() {
         html += '    <td class="3">No hay datos registrados</td>';
         html += '</tr>';
     }
-    const element = document.getElementById('listaLibros').getElementsByTagName('tbody')[0];
+    const element = document.getElementById('listaAutores').getElementsByTagName('tbody')[0];
     element.innerHTML = html;
 }
 
