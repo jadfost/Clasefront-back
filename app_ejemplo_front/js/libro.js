@@ -26,17 +26,16 @@ function asignarDatosTablaHtml() {
         console.log(item);
         html += '<tr>';
         html += '    <td>' + item.nombre + '</td>';
+        html += '    <td>' + item.descripcion + '</td>';
+        html += '    <td>' + item.fecha_publicacion + '</td>';
+        html += '    <td>' + item.edicion + '</td>';
+        html += '    <td>' + item.editorial_id + '</td>';
         html += '    <td>';
         html += '        <div class="contentButtons">';
         html += '           <button class="contentButtons__button contentButtons__button-verde" onclick="ver(' + item.id + ')">Ver detalle</button>';
         html += '           <button class="contentButtons__button contentButtons__button-azul" onclick="modificar(' + item.id + ')">Modificar</button>';
         html += '           <button class="contentButtons__button contentButtons__button-rojo" onclick="eliminar(' + item.id + ')">Eliminar</button>';
         html += '        <div>';
-        // html += '        <div class="contentButtons">';
-        // html += '           <button class="button verde" onclick="ver(' + item.id + ')">Ver detalle</button>';
-        // html += '           <button class="button azul" onclick="modificar(' + item.id + ')">Modificar</button>';
-        // html += '           <button class="button rojo" onclick="eliminar(' + item.id + ')">Eliminar</button>';
-        // html += '        <div>';
         html += '    </td>';
         html += '</tr>';
     }
@@ -66,11 +65,11 @@ function datailApi() {
 
 function saveDataForm(event) {
     event.preventDefault();
-    let data = '&nombres=' + document.getElementById('nombre').value;
-    data += '&descripcions=' + document.getElementById('descripcion').value;
-    data += '&fecha_publicacions=' + document.getElementById('fecha_publicacion').value;
-    data += '&edicions=' + document.getElementById('edicion').value;
-    data += '&editorial_ids=' + document.getElementById('editorial_id').value;
+    let data = '&nombres=' + document.getElementById('nombres').value;
+    data += '&descripcions=' + document.getElementById('Descripcions').value;
+    data += '&fecha_publicacions=' + document.getElementById('fecha_publicacions').value;
+    data += '&edicions=' + document.getElementById('edicions').value;
+    data += '&editorial_ids=' + document.getElementById('editorial_ids').value;
     save(data);
 }
 
@@ -97,11 +96,11 @@ function crear() {
     libro = null;
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
     elementTitulo.innerText = 'Registrar datos libro';
-    document.getElementById('nombre').value = '';
-    document.getElementById('descripcion').value = '';
-    document.getElementById('fecha_publicacion').value = '';
-    document.getElementById('edicion').value = '';
-    document.getElementById('editorial_id').value = '';
+    document.getElementById('nombres').value = '';
+    document.getElementById('Descripcions').value = '';
+    document.getElementById('fecha_publicacions').value = '';
+    document.getElementById('edicions').value = '';
+    document.getElementById('editorial_ids').value = '';
     document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
 }
 
@@ -112,12 +111,13 @@ function modificar(id) {
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
     elementTitulo.innerText = 'Modificar datos libro';
     datailApi();
+    console.log(libro.edicion);
     if (libro != null) {
-        document.getElementById('nombre').value = libro.nombre;
-        document.getElementById('descripcion').value = libro.descripcion;
-        document.getElementById('fecha_publicacion').value = libro.fecha_publicacion;
-        document.getElementById('edicion').value = libro.edicion;
-        document.getElementById('editorial_id').value = libro.editorial_id;
+        document.getElementById('nombres').value = libro.nombre;
+        document.getElementById('Descripcions').value = libro.descripcion;
+        document.getElementById('fecha_publicacions').value = libro.fecha_publicacion;
+        document.getElementById('edicions').value = libro.edicion;
+        document.getElementById('editorial_ids').value = libro.editorial_id;
         document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
     }
 }
@@ -154,6 +154,8 @@ function ver(id) {
     idLibro = id;
     libro = null;
     datailApi();
+    console.log(libro.descripcion);
+
     if (libro != null) {
         document.getElementById('nombreLb').innerText = libro.nombre;
         document.getElementById('descripcionLb').innerText = libro.descripcion;
