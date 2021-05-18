@@ -64,6 +64,10 @@ class LibroController extends BaseController
         $model = new Libro();
         $model->set('id', $id);
         $model->set('nombre', $request['nombre']);
+        $model->set('descripcion',  $request['descripcion']);
+        $model->set('fecha_publicacion',  $request['fecha_publicacion']);      
+        $model->set('edicion',  $request['edicion']);
+        $model->set('editorial_id',  $request['editorial_id']);
         $status = $model->update();
         return $status ? 'Registro actualizado' : 'Error al actualizar el registro';
     }

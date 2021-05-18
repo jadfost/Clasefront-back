@@ -65,11 +65,11 @@ function datailApi() {
 
 function saveDataForm(event) {
     event.preventDefault();
-    let data = '&nombres=' + document.getElementById('nombres').value;
-    data += '&descripcions=' + document.getElementById('Descripcions').value;
-    data += '&fecha_publicacions=' + document.getElementById('fecha_publicacions').value;
-    data += '&edicions=' + document.getElementById('edicions').value;
-    data += '&editorial_ids=' + document.getElementById('editorial_ids').value;
+    let data = 'nombre=' + document.getElementById('nombres').value;
+    data += '&descripcion=' + document.getElementById('Descripcions').value;
+    data += '&fecha_publicacion=' + document.getElementById('fecha_publicacions').value;
+    data += '&edicion=' + document.getElementById('edicions').value;
+    data += '&editorial_id=' + document.getElementById('editorial_ids').value;
     save(data);
 }
 
