@@ -13,17 +13,14 @@ $uriClass = [
         'model' => 'models/editorial.php',
         'controller' => 'controllers/editorial_controller.php'
     ],
-
     "autores" => [
         'model' => 'models/autor.php',
         'controller' => 'controllers/autor_controller.php'
     ],
-
     "libros" => [
         'model' => 'models/libro.php',
         'controller' => 'controllers/libro_controller.php'
     ],
-
     "temas" => [
         'model' => 'models/tema.php',
         'controller' => 'controllers/tema_controller.php'
@@ -32,10 +29,8 @@ $uriClass = [
 
 $controllers = [
     "editoriales" => 'controllers\EditorialController',
-
-    "autores" => 'controllers\AutorController'
-
-    "libros" => 'controllers\LibroController'
+    "autores" => 'controllers\AutorController',
+    "libros" => 'controllers\LibroController',
     "temas" => 'controllers\TemaController'
 ];
 

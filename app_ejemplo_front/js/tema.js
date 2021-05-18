@@ -1,28 +1,28 @@
 
-const urlApi = "http://localhost/clase/Clasefront-back/app_ejemplo_php/autores";
-let listaAutores = [];
-let idAutor = 0;
-let autor = null;
+const urlApi = "http://localhost/clase/Clasefront-back/app_ejemplo_php/temas";
+let listaTemas = [];
+let idTema = 0;
+let tema = null;
 
-function autoresApi() {
+function temasApi() {
     let response = null;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             response = JSON.parse(this.response);
             console.log(response);
-            listaAutores = response.data;
+            listaTemas = response.data;
             asignarDatosTablaHtml();
         }
     };
     xhttp.open("GET", urlApi, true);
     xhttp.send();
 }
-autoresApi();
+temasApi();
 
 function asignarDatosTablaHtml() {
     let html = '';
-    for (let item of listaAutores) {
+    for (let item of listaTemas) {
         console.log(item);
         html += '<tr>';
         html += '    <td>' + item.nombre + '</td>';
@@ -56,10 +56,10 @@ function datailApi() {
         if (this.readyState == 4 && this.status == 200) {
             response = JSON.parse(this.response);
             console.log(response);
-            autor = response.data;
+            tema = response.data;
         }
     };
-    xhttp.open("GET", urlApi + '/' + idAutor, false);
+    xhttp.open("GET", urlApi + '/' + idTema, false);
     xhttp.send();
 }
 
@@ -77,42 +77,42 @@ function save(data) {
         if (this.readyState == 4 && this.status == 200) {
             reponse = JSON.parse(this.response);
             console.log(reponse);
-            autoresApi();
+            temasApi();
             onClickCancelar();
         }
     };
-    let param = idAutor > 0 ? '/' + idAutor : '';
-    let metodo = idAutor > 0 ? 'PUT' : 'POST';
+    let param = idTema > 0 ? '/' + idTema : '';
+    let metodo = idTema > 0 ? 'PUT' : 'POST';
     xhttp.open(metodo, urlApi + param, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(data);
 }
 
 function crear() {
-    idAutor = 0;
-    autor = null;
+    idTema = 0;
+    tema = null;
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
-    elementTitulo.innerText = 'Registrar datos autor';
+    elementTitulo.innerText = 'Registrar datos tema';
     document.getElementById('nombre').value = '';
     document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
 }
 
 function modificar(id) {
     console.log(id);
-    idAutor = id;
-    autor = null;
+    idTema = id;
+    tema = null;
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
-    elementTitulo.innerText = 'Modificar datos autor';
+    elementTitulo.innerText = 'Modificar datos tema';
     datailApi();
-    if (autor != null) {
-        document.getElementById('nombre').value = autor.nombre;
+    if (tema != null) {
+        document.getElementById('nombre').value = tema.nombre;
         document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
     }
 }
 
 function eliminar(id) {
     console.log(id);
-    idAutor = id;
+    idTema = id;
     document.getElementsByClassName('popupControll')[2].classList.remove('popupControll-cerrar');
 }
 
@@ -123,13 +123,13 @@ function onClickSi() {
         if (this.readyState == 4 && this.status == 200) {
             response = JSON.parse(this.response);
             console.log(response);
-            idAutor = 0;
-            autor = null;
-            autoresApi();
+            idTema = 0;
+            tema = null;
+            temasApi();
             document.getElementsByClassName('popupControll')[2].classList.add('popupControll-cerrar');
         }
     };
-    xhttp.open("DELETE", urlApi + '/' + idAutor, false);
+    xhttp.open("DELETE", urlApi + '/' + idTema, false);
     xhttp.send();
 }
 
@@ -139,11 +139,11 @@ function onClickNo() {
 
 function ver(id) {
     console.log(id);
-    idAutor = id;
-    autor = null;
+    idTema = id;
+    tema = null;
     datailApi();
-    if (autor != null) {
-        document.getElementById('nombreLb').innerText = autor.nombre;
+    if (tema != null) {
+        document.getElementById('nombreLb').innerText = tema.nombre;
         document.getElementsByClassName('popupControll')[1].classList.remove('popupControll-cerrar');
     }
 }
