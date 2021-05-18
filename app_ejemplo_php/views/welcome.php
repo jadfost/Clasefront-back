@@ -6,6 +6,7 @@ require_once  dirname(__DIR__) . '/models/model.php';
 require_once dirname(__DIR__) . '/models/estudiante.php';
 require_once dirname(__DIR__) . '/controllers/base_controller.php';
 require_once dirname(__DIR__) . '/controllers/estudiante_controller.php';
+require_once dirname(__DIR__) . '/controllers/autor_controller.php';
 
 use controllers\EstudianteController;
 
