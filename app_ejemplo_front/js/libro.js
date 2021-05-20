@@ -32,7 +32,7 @@ function asignarDatosTablaHtml() {
         html += '    <td>' + item.editorial_id + '</td>';
         html += '    <td>';
         html += '        <div class="contentButtons">';
-        html += '           <button class="contentButtons__button contentButtons__button-verde" onclick="ver(' + item.id + ')">Ver detalle</button>';
+        html += '           <button class="contentButtons__button contentButtons__button-verde" onclick="ver(' + item.id + ')">Ver</button>';
         html += '           <button class="contentButtons__button contentButtons__button-azul" onclick="modificar(' + item.id + ')">Modificar</button>';
         html += '           <button class="contentButtons__button contentButtons__button-rojo" onclick="eliminar(' + item.id + ')">Eliminar</button>';
         html += '        <div>';
