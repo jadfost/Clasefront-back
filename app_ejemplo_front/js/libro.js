@@ -1,8 +1,29 @@
 
 const urlApi = "http://localhost/clase/Clasefront-back/app_ejemplo_php/libros";
+const urlApiAutores = "http://localhost/clase/Clasefront-back/app_ejemplo_php/autores";
+const urlApiEditoriales = "http://localhost/clase/Clasefront-back/app_ejemplo_php/editoriales";
+const urlApiTemas= "http://localhost/clase/Clasefront-back/app_ejemplo_php/temas";
+const urlApiSubTemas= "http://localhost/clase/Clasefront-back/app_ejemplo_php/subtemas";
+
 let listaLibros = [];
 let idLibro = 0;
 let libro = null;
+
+let listaAutores = [];
+let idAutor= 0;
+let autor = null;
+
+let listaEditoriales = [];
+let idEditorial= 0;
+let editorial = null;
+
+let listaTemas = [];
+let idTemas= 0;
+let tema = null;
+
+let listaSubtemas = [];
+let idSubtema= 0;
+let subtema = null;
 
 function librosApi() {
     let response = null;
@@ -19,6 +40,70 @@ function librosApi() {
     xhttp.send();
 }
 librosApi();
+
+function autorApi() {
+    let response = null;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            response = JSON.parse(this.response);
+            console.log(response);
+            listaAutores = response.data;
+            asignarDatosTablaHtml();
+        }
+    };
+    xhttp.open("GET", urlApiAutores, true);
+    xhttp.send();
+}
+autorApi();
+
+function editorialApi() {
+    let response = null;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            response = JSON.parse(this.response);
+            console.log(response);
+            listaEditoriales = response.data;
+            asignarDatosTablaHtml();
+        }
+    };
+    xhttp.open("GET", urlApiEditoriales, true);
+    xhttp.send();
+}
+editorialApi();
+
+function temasApi() {
+    let response = null;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            response = JSON.parse(this.response);
+            console.log(response);
+            listaTemas = response.data;
+            asignarDatosTablaHtml();
+        }
+    };
+    xhttp.open("GET", urlApiTemas, true);
+    xhttp.send();
+}
+temasApi();
+
+function subtemasApi() {
+    let response = null;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            response = JSON.parse(this.response);
+            console.log(response);
+            listaSubtemas = response.data;
+            asignarDatosTablaHtml();
+        }
+    };
+    xhttp.open("GET", urlApiSubTemas, true);
+    xhttp.send();
+}
+subtemasApi();
 
 function asignarDatosTablaHtml() {
     let html = '';
@@ -101,7 +186,57 @@ function crear() {
     document.getElementById('fecha_publicacions').value = '';
     document.getElementById('edicions').value = '';
     document.getElementById('editorial_ids').value = '';
+    
+    setautor();
+    seteditorial();
+    settema();
+    setsubtema();
+
     document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
+}
+
+function seteditorial(){
+    let valor = '';
+    valor += '<select class="control-input__input" name="editoriales" id="editoriales" type="text" value="" required>'
+    for (let editorial of listaEditoriales){
+        valor += '<option value ="'+editorial.id+'">'+editorial.nombre+'</option>';
+    }
+    valor+='</select>';
+    document.getElementById('editoriales').innerHTML=valor;
+}
+
+function setautor(){
+    let valor = '';
+    valor+='<fieldset>';
+    valor+='<div>';
+
+    for (let autor of listaAutores){
+        valor+='<input type="checkbox" name="autores" id="autores" value="'+autor.id+'">';
+        valor+='<label for="autores">'+autor.nombre+'</label>';    
+    }
+    valor+='</div>';
+    valor+='</fieldset>';
+    document.getElementById('remplazar').innerHTML=valor;
+}
+
+function settema(){
+    let valor = '';
+    valor += '<select class="control-input__input" name="temas" id="temas" type="text" value="" required>'
+    for (let tema of listaTemas){
+        valor += '<option value ="'+tema.id+'">'+tema.nombre+'</option>';
+    }
+    valor+='</select>';
+    document.getElementById('temas').innerHTML=valor;
+}
+
+function setsubtema(){
+    let valor = '';
+    valor += '<select class="control-input__input" name="subtemas" id="subtemas" type="text" value="" required>'
+    for (let subtema of listaSubtemas){
+        valor += '<option value ="'+subtema.id+'">'+subtema.nombre+'</option>';
+    }
+    valor+='</select>';
+    document.getElementById('subtemas').innerHTML=valor;
 }
 
 function modificar(id) {
@@ -162,6 +297,11 @@ function ver(id) {
         document.getElementById('fecha_publicacionLb').innerText = libro.fecha_publicacion;
         document.getElementById('edicionLb').innerText = libro.edicion;
         document.getElementById('editorial_idLb').innerText = libro.editorial_id;
+        
+        document.getElementById('autorLb').innerText = libro.descripcion;
+        document.getElementById('editorialLb').innerText = libro.fecha_publicacion;
+        document.getElementById('temaLb').innerText = libro.edicion;
+        document.getElementById('subtemaLb').innerText = libro.editorial_id;
         document.getElementsByClassName('popupControll')[1].classList.remove('popupControll-cerrar');
     }
 }

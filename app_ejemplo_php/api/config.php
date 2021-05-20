@@ -25,13 +25,18 @@ $uriClass = [
         'model' => 'models/tema.php',
         'controller' => 'controllers/tema_controller.php'
     ],
+    "subtemas" => [
+        'model' => 'models/subtema.php',
+        'controller' => 'controllers/subtema_controller.php'
+    ],
 ];
 
 $controllers = [
     "editoriales" => 'controllers\EditorialController',
     "autores" => 'controllers\AutorController',
     "libros" => 'controllers\LibroController',
-    "temas" => 'controllers\TemaController'
+    "temas" => 'controllers\TemaController',
+    "subtemas" => 'controllers\SubtemaController'
 ];
 
 

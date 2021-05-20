@@ -76,11 +76,33 @@
                   <label class="control-input__etiqueta">Editorial_id:</label>
                   <input class="control-input__input" name="editorial_ids" id="editorial_ids" type="number" value="" required>
               </div>
-              <div class="contentButtons">
-                  <button type="submit" class="contentButtons__button contentButtons__button-guardar">Guardar</button>
-                  <button type="button" class="contentButtons__button contentButtons__button-cancelar"
-                      onclick="onClickCancelar()">Cancelar</button>
+              <h2 class="popupControll__titulo">Registrar Datos Avanzados</h2>
+              <div class="control-input">
+                <label class="control-input__etiqueta">Autores:</label>
+                <fieldset id="remplazar">
+                  <div>
+                    <input type="checkbox" name="autores" id="autores" value="" >
+                    <label for="autores">autores</label>
+                  </div>
+                </fieldset>
               </div>
+              <div class="control-input">
+                  <label class="control-input__etiqueta">Editoriales:</label>
+                  <select class="control-input__input" name="editoriales" id="editoriales" type="text" value="" required></select>
+              </div>
+              <div class="control-input">
+                <label class="control-input__etiqueta">Temas:</label>
+                <select class="control-input__input" name="temas" id="temas" type="text" value="" required></select>
+            </div>
+            <div class="control-input">
+                <label class="control-input__etiqueta">Sub Temas:</label>
+                <select class="control-input__input" name="subtemas" id="subtemas" type="text" value="" required></select>
+            </div>
+            <div class="contentButtons">
+                <button type="submit" class="contentButtons__button contentButtons__button-guardar">Guardar</button>
+                <button type="button" class="contentButtons__button contentButtons__button-cancelar"
+                    onclick="onClickCancelar()">Cancelar</button>
+            </div>
           </form>
       </div>
   </div>
@@ -108,10 +130,27 @@
               <label class="control-detail__label">Editorial_id:</label>
               <label id="editorial_idLb" class="control-detail__valor"></label>
           </div>
-          <div class="contentButtons">
-              <button type="button" class="contentButtons__button contentButtons__button-cancelar"
-                  onclick="onClickCerrar()">Cerrar</button>
+          <h2>Detalles Avanzados</h2>
+          <div class="control-detail">
+              <label class="control-detail__label">Autor:</label>
+              <label id="autorLb" class="control-detail__valor"></label>
           </div>
+          <div class="control-detail">
+            <label class="control-detail__label">Editorial:</label>
+            <label id="editorialLb" class="control-detail__valor"></label>
+        </div>
+        <div class="control-detail">
+          <label class="control-detail__label">Tema:</label>
+          <label id="temaLb" class="control-detail__valor"></label>
+        </div>
+        <div class="control-detail">
+          <label class="control-detail__label">Sud-Tema:</label>
+          <label id="subtemaLb" class="control-detail__valor"></label>
+        </div>
+        <div class="contentButtons">
+          <button type="button" class="contentButtons__button contentButtons__button-cancelar"
+              onclick="onClickCerrar()">Cerrar</button>
+      </div>
       </div>
   </div>
 
