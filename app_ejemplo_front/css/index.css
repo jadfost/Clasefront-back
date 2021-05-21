@@ -24,7 +24,7 @@
 /*BEM*/
 
 * {
-    font-family: 'Reggae One', cursive;
+    font-family: 'Reggae One', ;
 }
 
 .contentButtons {
@@ -40,7 +40,7 @@
 }
 
 .contentButtons__button {
-    margin: 5px;
+    margin: 3px;
     border-radius: 5px;
     height: 30px;
     cursor: pointer;
@@ -65,7 +65,9 @@
 .contentButtons__button-no {}
 
 .contentButtons__button-verde {
-    background-color: green;
+    background-color: rgb(20, 88, 20);
+    color: #fff;
+    border-color: rgb(20, 88, 20);
 }
 
 .contentButtons__button-verde:hover {
@@ -76,11 +78,15 @@
 }
 
 .contentButtons__button-azul {
-    background-color: blue;
+    background-color: rgb(22, 76, 224);
+    color: #fff;
+    border-color: rgb(22, 76, 224);
 }
 
 .contentButtons__button-rojo {
-    background-color: red;
+    background-color: rgb(117, 10, 10);
+    color: #fff;
+    border-color: rgb(117, 10, 10);
 }
 
 .popupControll {

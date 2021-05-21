@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Inicio</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Lista, Crear, Actualizar, Borrar">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>AUTORES</title>
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/solido.css" media="screen">
     <link rel="stylesheet" href="css/index.css">
-</head>
-
-<body>
-    <div>
-        <h1>Listado de Autores</h1>
-        <div class="contentButtons contentButtons-flex-end">
-            <button class="contentButtons__button" onclick="crear()">Crear</button>
-        </div>
-        <table id="listaAutores" class="tabla">
-            <thead>
-                <tr>
-                    <th class="tabla__th tabla__th-22W">Nombre</th>
-                    <th class="tabla__th">Operaciones</th>
-                </tr>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+  </head>
+  <body data-home-page="editoriales.html" data-home-page-title="editoriales" class="u-body u-overlap"><header class="u-clearfix u-header u-palette-1-base u-sticky u-header" id="sec-4fa2"><div class="u-clearfix u-sheet u-sheet-1">
+        <h1 class="u-text u-text-1">LISTA DE AUTORES</h1>
+      </div></header>
+    <section class="u-align-center u-clearfix u-section-1" id="sec-b40c">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <a onclick="crear()" class="u-btn u-btn-round u-button-style u-custom-color-1 u-hover-palette-1-light-1 u-radius-50 u-btn-1">CREAR</a>
+        <a href="index.html" class="u-btn u-btn-round u-button-style u-custom-color-1 u-hover-palette-1-light-1 u-radius-50 u-btn-2">INICIO</a>
+        <a href="javascript:history.back()" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">ATRAS</a>
+        <a href="javascript:history.go(1)" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-4">ADELANTE</a>
+        
+        <div class="u-expanded-width u-table u-table-responsive u-table-1">          
+            <table id="listaAutores" class="u-table-entity">
+            <thead class="u-align-center u-palette-1-base u-table-header u-table-header-1">
+              <tr style="height: 21px;">
+                <th class="u-border-1 u-border-palette-4-base u-table-cell">NOMBRE</th>
+                <th class="u-border-1 u-border-palette-4-base u-table-cell">OPERACIONES</th>
+              </tr>
             </thead>
             <tbody>
                 <tr>
