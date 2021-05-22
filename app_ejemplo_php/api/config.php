@@ -5,6 +5,7 @@ require_once dirname(__DIR__) . '/models/model.php';
 require_once dirname(__DIR__) . '/controllers/base_controller.php';
 require_once dirname(__DIR__) . '/api/parse_array_reponse.php';
 require_once dirname(__DIR__) . '/api/response.php';
+require_once dirname(__DIR__) . '/models/autor_libro.php';
 
 $uriRelativeApp =  '/clase/Clasefront-back/app_ejemplo_php/';
 

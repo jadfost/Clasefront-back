@@ -155,8 +155,21 @@ function saveDataForm(event) {
     data += '&fecha_publicacion=' + document.getElementById('fecha_publicacions').value;
     data += '&edicion=' + document.getElementById('edicions').value;
     data += '&editorial_id=' + document.getElementById('editorial_ids').value;
+
+    data += '&editoriales_id=' + document.getElementById('editoriales').value;
+    data += '&temas_id=' + document.getElementById('temas').value;
+    data += '&subtemas_id=' + document.getElementById('subtemas').value;
+    
+    var valorautores = '';
+    var radioButTrat = document.getElementsByName("autores");
+    for (var i=0; i<radioButTrat.length; i++) {
+        if (radioButTrat[i].checked == true){
+            valorautores+=(valorautores==''?'':',')+radioButTrat[i].value;
+        }
+    }
+    data += '&autores_id=' + valorautores;
     save(data);
-}
+    }
 
 function save(data) {
     let reponse = null;
@@ -210,8 +223,9 @@ function setautor(){
     valor+='<fieldset>';
     valor+='<div>';
 
+
     for (let autor of listaAutores){
-        valor+='<input type="checkbox" name="autores" id="autores" value="'+autor.id+'">';
+        valor+='<input type="checkbox" name="autores" id="autores" class="autores" value="'+autor.id+'">';
         valor+='<label for="autores">'+autor.nombre+'</label>';    
     }
     valor+='</div>';

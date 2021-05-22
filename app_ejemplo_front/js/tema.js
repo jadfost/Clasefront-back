@@ -1,8 +1,13 @@
 
 const urlApi = "http://localhost/clase/Clasefront-back/app_ejemplo_php/temas";
+const urlApiSubTemas = "http://localhost/clase/Clasefront-back/app_ejemplo_php/subtemas";
 let listaTemas = [];
 let idTema = 0;
 let tema = null;
+
+let listaSubtemas = [];
+let idSubtema = 0;
+let subtema = null;
 
 function temasApi() {
     let response = null;
@@ -19,6 +24,22 @@ function temasApi() {
     xhttp.send();
 }
 temasApi();
+
+function subtemasApi() {
+    let response = null;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            response = JSON.parse(this.response);
+            console.log(response);
+            listaSubtemas = response.data;
+            asignarDatosTablaHtml();
+        }
+    };
+    xhttp.open("GET", urlApiSubTemas, true);
+    xhttp.send();
+}
+subtemasApi();
 
 function asignarDatosTablaHtml() {
     let html = '';
@@ -63,6 +84,20 @@ function datailApi() {
     xhttp.send();
 }
 
+function datailApisub() {
+    let response = null;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            response = JSON.parse(this.response);
+            console.log(response);
+            subtema = response.data;
+        }
+    };
+    xhttp.open("GET", urlApiSubTemas + '/' + idSubtema, false);
+    xhttp.send();
+}
+
 
 function saveDataForm(event) {
     event.preventDefault();
@@ -95,6 +130,16 @@ function crear() {
     elementTitulo.innerText = 'Registrar datos tema';
     document.getElementById('nombre').value = '';
     document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
+}
+
+function setsubtema(){
+    let valor = '';
+    valor += '<select class="control-input__input" name="subtemas" id="subtemas" type="text" value="" required>'
+    for (let subtema of listaSubtemas){
+        valor += '<option value ="'+subtema.id+'">'+subtema.nombre+'</option>';
+    }
+    valor+='</select>';
+    document.getElementById('subtemas').innerHTML=valor;
 }
 
 function modificar(id) {
@@ -146,6 +191,7 @@ function ver(id) {
         document.getElementById('nombreLb').innerText = tema.nombre;
         document.getElementsByClassName('popupControll')[1].classList.remove('popupControll-cerrar');
     }
+
 }
 
 function onClickCancelar() {
