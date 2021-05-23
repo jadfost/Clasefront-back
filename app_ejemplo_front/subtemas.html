@@ -6,7 +6,7 @@
     <meta name="keywords" content="Lista, Crear, Actualizar, Borrar">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>TEMAS</title>
+    <title>SUBTEMAS</title>
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/solido.css" media="screen">
     <link rel="stylesheet" href="css/index.css">
@@ -14,7 +14,7 @@
     
   </head>
   <body data-home-page="editoriales.html" data-home-page-title="editoriales" class="u-body u-overlap"><header class="u-clearfix u-header u-palette-1-base u-sticky u-header" id="sec-4fa2"><div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-text u-text-1">LISTA DE TEMAS</h1>
+        <h1 class="u-text u-text-1">LISTA DE SUBTEMAS</h1>
       </div></header>
     <section class="u-align-center u-clearfix u-section-1" id="sec-b40c">
       <div class="u-clearfix u-sheet u-sheet-1">
@@ -22,8 +22,6 @@
         <a href="javascript:history.back()" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-2">ATRAS</a>
         <a href="javascript:history.go(1)" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">ADELANTE</a>
         <a onclick="crear()" class="u-btn u-btn-round u-button-style u-custom-color-1 u-hover-palette-1-light-1 u-radius-50 u-btn-4">CREAR</a>
-        <a href="subtemas.html" class="u-btn u-btn-round u-button-style u-custom-color-1 u-hover-palette-1-light-1 u-radius-50 u-btn-5">CREAR SUB TEMAS</a>
-
 
         
         <div class="u-expanded-width u-table u-table-responsive u-table-1">          
@@ -31,6 +29,7 @@
             <thead class="u-align-center u-palette-1-base u-table-header u-table-header-1">
               <tr style="height: 21px;">
                 <th class="u-border-1 u-border-palette-4-base u-table-cell">NOMBRE</th>
+                <th class="u-border-1 u-border-palette-4-base u-table-cell">TEMA_ID</th>
                 <th class="u-border-1 u-border-palette-4-base u-table-cell">OPERACIONES</th>
               </tr>
             </thead>
@@ -48,6 +47,10 @@
                 <div class="control-input">
                     <label class="control-input__etiqueta">Nombres:</label>
                     <input class="control-input__input" name="nombre" id="nombre" type="text" value="" required>
+                </div>
+                <div class="control-input">
+                    <label class="control-input__etiqueta">Temas:</label>
+                    <select class="control-input__input" name="temas" id="temas" type="text" value="" required></select>
                 </div>
                 <div class="contentButtons">
                     <button type="submit" class="contentButtons__button contentButtons__button-guardar">Guardar</button>
@@ -68,7 +71,7 @@
             <h3>Detalle datos Sub-Tema</h3>
             <div class="control-detail">
                 <label class="control-detail__label">Sub-Temas:</label>
-                <label id="subLb" class="control-detail__valor"></label>
+                <label id="subtemasLb" class="control-detail__valor"></label>
             </div>
             <div class="contentButtons">
                 <button type="button" class="contentButtons__button contentButtons__button-cancelar"
@@ -89,7 +92,7 @@
             </div>
         </div>
     </div>
-    <script src="js/tema.js"></script>
+    <script src="js/subtema.js"></script>
 </body>
 
 </html>
