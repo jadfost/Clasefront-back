@@ -51,23 +51,30 @@
 }
 
 .contentButtons__button-guardar {
-    background-color: #4CAF50;
+    background-color: #128C2D;
     color: #fff;
 }
 
 .contentButtons__button-cancelar {
-    background-color: #545454;
+    background-color: #3a3a3a;
     color: #fff;
 }
 
-.contentButtons__button-si {}
+.contentButtons__button-si {
+    background-color: #128C2D;
+    color: #fff;
+    border-color: #128C2D;
+}
 
-.contentButtons__button-no {}
+.contentButtons__button-no {
+    background-color: #3a3a3a;
+    color: #fff;
+}
 
 .contentButtons__button-verde {
-    background-color: rgb(20, 88, 20);
+    background-color: #128C2D;
     color: #fff;
-    border-color: rgb(20, 88, 20);
+    border-color: #128C2D;
 }
 
 .contentButtons__button-verde:hover {
@@ -78,15 +85,15 @@
 }
 
 .contentButtons__button-azul {
-    background-color: rgb(22, 76, 224);
+    background-color: #1A6AB8;
     color: #fff;
-    border-color: rgb(22, 76, 224);
+    border-color: #1A6AB8;
 }
 
 .contentButtons__button-rojo {
-    background-color: rgb(117, 10, 10);
+    background-color: rgb(136, 12, 12);
     color: #fff;
-    border-color: rgb(117, 10, 10);
+    border-color: rgb(136, 12, 12);
 }
 
 .popupControll {
@@ -143,7 +150,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
 }
