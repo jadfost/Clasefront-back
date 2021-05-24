@@ -42,7 +42,10 @@ class LibroController extends BaseController
         $model->set('descripcion', $request['descripcion']);
         $model->set('fecha_publicacion', $request['fecha_publicacion']);
         $model->set('edicion', $request['edicion']);
-        $model->set('editorial_id', $request['editorial_id']);
+        $model->set('editorial_id', $request['editorials_id']);
+
+        $model->set('tema_id', $request['temas_id']);
+
         $status = $model->save();
 
         $libros = $modelValidation->where([
