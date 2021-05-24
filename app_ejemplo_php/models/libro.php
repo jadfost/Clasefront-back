@@ -13,6 +13,8 @@ class Libro extends Model
     protected $edicion;
     protected $editorial_id;
 
+    protected $tema_id;
+
     public function __construct()
     {
         $this->superClass($this);

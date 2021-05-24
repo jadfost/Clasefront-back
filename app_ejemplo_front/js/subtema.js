@@ -90,12 +90,15 @@ function datailApi() {
 
 function saveDataForm(event) {
     event.preventDefault();
-    let data = '&nombre=' + document.getElementById('nombre').value;
+    let data = 'nombre=' + document.getElementById('nombre').value;
     
-    var valorautores = '';
-    var elementoCiudad = document.getElementById('temas');
-    var indiceSeleccionado = elementoCiudad.selectedIndex;
-    data += '&temas_id=' + valorautores;
+    var valortema = '';
+    var elementotema = document.getElementById('temas');
+    var indiceSeleccionado = elementotema.selectedIndex;
+    valortema = elementotema.options[indiceSeleccionado].value;
+    data += '&temas_id=' + valortema;
+    
+    console.log  (elementotema.options[indiceSeleccionado].value);
     save(data);
     }
 
@@ -131,8 +134,8 @@ function crear() {
 function settema(){
     let valor = '';
     valor += '<select class="control-input__input" name="temas" id="temas" type="text" value="" required>'
-    for (let subtema of listaSubtemas){
-        valor += '<option value ="'+subtema.tema_id+'">'+subtema.nombre+'</option>';
+    for (let tema of listaTemas){
+        valor += '<option value ="'+tema.id+'">'+tema.nombre+'</option>';
     }
     valor+='</select>';
     document.getElementById('temas').innerHTML=valor;
@@ -145,8 +148,10 @@ function modificar(id) {
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
     elementTitulo.innerText = 'Modificar datos subtema';
     datailApi();
+    settema();
     if (subtema != null) {
         document.getElementById('nombre').value = subtema.nombre;
+        document.getElementById('temas').value = subtema.tema_id;
         document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
     }
 }

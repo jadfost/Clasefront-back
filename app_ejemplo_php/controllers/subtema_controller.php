@@ -33,6 +33,8 @@ class SubtemaController extends BaseController
 
         $model = new subtema();
         $model->set('nombre', $request['nombre']);
+        $model->set('tema_id', $request['temas_id']);
+
         $status = $model->save();
         return $status ? 'Registro guardado' : 'Error al guardar el registro';
     }
@@ -52,6 +54,7 @@ class SubtemaController extends BaseController
         $model = new subtema();
         $model->set('id', $id);
         $model->set('nombre', $request['nombre']);
+        $model->set('tema_id', $request['temas_id']);
         $status = $model->update();
         return $status ? 'Registro actualizado' : 'Error al actualizar el registro';
     }

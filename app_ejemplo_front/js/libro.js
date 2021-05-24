@@ -154,9 +154,7 @@ function saveDataForm(event) {
     data += '&descripcion=' + document.getElementById('Descripcions').value;
     data += '&fecha_publicacion=' + document.getElementById('fecha_publicacions').value;
     data += '&edicion=' + document.getElementById('edicions').value;
-    data += '&editorial_id=' + document.getElementById('editorial_ids').value;
 
-    data += '&editoriales_id=' + document.getElementById('editoriales').value;
     data += '&temas_id=' + document.getElementById('temas').value;
     data += '&subtemas_id=' + document.getElementById('subtemas').value;
     
@@ -168,6 +166,22 @@ function saveDataForm(event) {
         }
     }
     data += '&autores_id=' + valorautores;
+
+    var valoreditorial = '';
+    var elementoeditorial = document.getElementById('editorial_ids');
+    var indiceSeleccionado = elementoeditorial.selectedIndex;
+    valoreditorial = elementoeditorial.options[indiceSeleccionado].value;
+    data += '&editorials_id=' + valoreditorial;
+    
+    console.log  (elementoeditorial.options[indiceSeleccionado].value);
+
+    var valoretemas = '';
+    var elementotema = document.getElementById('temas');
+    var indiceSeleccionado = elementotema.selectedIndex;
+    valoretemas = elementotema.options[indiceSeleccionado].value;
+    data += '&temas_id=' + valoretemas;
+    
+    console.log  (elementotema.options[indiceSeleccionado].value);
     save(data);
     }
 
@@ -198,25 +212,25 @@ function crear() {
     document.getElementById('Descripcions').value = '';
     document.getElementById('fecha_publicacions').value = '';
     document.getElementById('edicions').value = '';
-    document.getElementById('editorial_ids').value = '';
-    
+
+    seteditoriall();
     setautor();
-    seteditorial();
     settema();
     setsubtema();
 
     document.getElementsByClassName('popupControll')[0].classList.remove('popupControll-cerrar');
 }
 
-function seteditorial(){
+function seteditoriall(){
     let valor = '';
-    valor += '<select class="control-input__input" name="editoriales" id="editoriales" type="text" value="" required>'
+    valor += '<select class="control-input__input" name="editorial_ids" id="editorial_ids" type="number" value="" required>'
     for (let editorial of listaEditoriales){
         valor += '<option value ="'+editorial.id+'">'+editorial.nombre+'</option>';
     }
     valor+='</select>';
-    document.getElementById('editoriales').innerHTML=valor;
+    document.getElementById('editorial_ids').innerHTML=valor;
 }
+
 
 function setautor(){
     let valor = '';
@@ -260,6 +274,10 @@ function modificar(id) {
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
     elementTitulo.innerText = 'Modificar datos libro';
     datailApi();
+    seteditoriall();
+    setautor();
+    settema();
+    setsubtema();
     console.log(libro.edicion);
     if (libro != null) {
         document.getElementById('nombres').value = libro.nombre;
@@ -310,15 +328,15 @@ function ver(id) {
         document.getElementById('descripcionLb').innerText = libro.descripcion;
         document.getElementById('fecha_publicacionLb').innerText = libro.fecha_publicacion;
         document.getElementById('edicionLb').innerText = libro.edicion;
-        document.getElementById('editorial_idLb').innerText = libro.editorial_id;
-        
+        document.getElementById('editorial_idLb').innerText=libro.editorial_id;
+
         document.getElementById('autorLb').innerText = libro.descripcion;
-        document.getElementById('editorialLb').innerText = libro.fecha_publicacion;
         document.getElementById('temaLb').innerText = libro.edicion;
         document.getElementById('subtemaLb').innerText = libro.editorial_id;
         document.getElementsByClassName('popupControll')[1].classList.remove('popupControll-cerrar');
     }
 }
+
 
 function onClickCancelar() {
     document.getElementsByClassName('popupControll')[0].classList.add('popupControll-cerrar');
