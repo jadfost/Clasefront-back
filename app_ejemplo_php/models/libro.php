@@ -13,7 +13,8 @@ class Libro extends Model
     protected $edicion;
     protected $editorial_id;
 
-    protected $tema_id;
+    //protected $tema_id;
+    //protected $subtema_id;
 
     public function __construct()
     {

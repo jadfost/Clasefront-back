@@ -115,6 +115,7 @@ function asignarDatosTablaHtml() {
         html += '    <td>' + item.fecha_publicacion + '</td>';
         html += '    <td>' + item.edicion + '</td>';
         html += '    <td>' + item.editorial_id + '</td>';
+        html += '    <td>' + item.tema_id + '</td>';
         html += '    <td>';
         html += '        <div class="contentButtons">';
         html += '           <button class="contentButtons__button contentButtons__button-verde" onclick="ver(' + item.id + ')">Ver</button>';
@@ -155,7 +156,6 @@ function saveDataForm(event) {
     data += '&fecha_publicacion=' + document.getElementById('fecha_publicacions').value;
     data += '&edicion=' + document.getElementById('edicions').value;
 
-    data += '&temas_id=' + document.getElementById('temas').value;
     data += '&subtemas_id=' + document.getElementById('subtemas').value;
     
     var valorautores = '';
@@ -182,6 +182,14 @@ function saveDataForm(event) {
     data += '&temas_id=' + valoretemas;
     
     console.log  (elementotema.options[indiceSeleccionado].value);
+
+    var valoresubtemas = '';
+    var elementosubtema = document.getElementById('subtemas');
+    var indiceSeleccionado = elementosubtema.selectedIndex;
+    valoresubtemas = elementosubtema.options[indiceSeleccionado].value;
+    data += '&subtemas_id=' + valoresubtemas;
+    
+    console.log  (elementosubtema.options[indiceSeleccionado].value);
     save(data);
     }
 
@@ -331,8 +339,8 @@ function ver(id) {
         document.getElementById('editorial_idLb').innerText=libro.editorial_id;
 
         document.getElementById('autorLb').innerText = libro.descripcion;
-        document.getElementById('temaLb').innerText = libro.edicion;
-        document.getElementById('subtemaLb').innerText = libro.editorial_id;
+        document.getElementById('temaLb').innerText = libro.tema_id;
+        document.getElementById('subtemaLb').innerText = libro.subtema_id;
         document.getElementsByClassName('popupControll')[1].classList.remove('popupControll-cerrar');
     }
 }

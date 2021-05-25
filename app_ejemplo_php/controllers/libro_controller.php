@@ -30,8 +30,7 @@ class LibroController extends BaseController
             ['nombre', '=', $request['nombre']],
             ['descripcion', '=', $request['descripcion']],
             ['fecha_publicacion', '=', $request['fecha_publicacion']],
-            ['edicion', '=', $request['edicion']],
-            ['editorial_id', '=', $request['editorial_id']]
+            ['edicion', '=', $request['edicion']]
         ]);
         if (count($data) > 0) {
             return "El nombre ya se cuentra registrado";
@@ -44,19 +43,24 @@ class LibroController extends BaseController
         $model->set('edicion', $request['edicion']);
         $model->set('editorial_id', $request['editorials_id']);
 
-        $model->set('tema_id', $request['temas_id']);
-
         $status = $model->save();
 
         $libros = $modelValidation->where([
             ['nombre', '=', $request['nombre']],
             ['descripcion', '=', $request['descripcion']],
             ['fecha_publicacion', '=', $request['fecha_publicacion']],
-            ['edicion', '=', $request['edicion']],
-            ['editorial_id', '=', $request['editorial_id']]
+            ['edicion', '=', $request['edicion']]
         ]);
         $idlibro = $libros[0]->get('id');
         $idautor = 0;
+        $idsubtema = 0;
+
+            $idsubtema = $subtemas_id;
+            $modellibrosub = new LibroSubtema ();
+            $modellibrosub ->set('sub_tema_id', $idsubtema);
+            $modellibrosub ->set('libro_id', $idlibro);
+            $modellibrosub -> save();
+            
         for($i=0; $i<count($autores_id);$i++){
             $idautor = $autores_id[$i];
             $modelautorlibro = new AutorLibro ();
