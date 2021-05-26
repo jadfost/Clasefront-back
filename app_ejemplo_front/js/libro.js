@@ -156,7 +156,6 @@ function saveDataForm(event) {
     data += '&fecha_publicacion=' + document.getElementById('fecha_publicacions').value;
     data += '&edicion=' + document.getElementById('edicions').value;
 
-    data += '&subtemas_id=' + document.getElementById('subtemas').value;
     
     var valorautores = '';
     var radioButTrat = document.getElementsByName("autores");

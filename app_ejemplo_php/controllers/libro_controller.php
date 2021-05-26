@@ -60,7 +60,7 @@ class LibroController extends BaseController
             $modellibrosub ->set('sub_tema_id', $idsubtema);
             $modellibrosub ->set('libro_id', $idlibro);
             $modellibrosub -> save();
-            
+
         for($i=0; $i<count($autores_id);$i++){
             $idautor = $autores_id[$i];
             $modelautorlibro = new AutorLibro ();
