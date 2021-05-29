@@ -115,7 +115,6 @@ function asignarDatosTablaHtml() {
         html += '    <td>' + item.fecha_publicacion + '</td>';
         html += '    <td>' + item.edicion + '</td>';
         html += '    <td>' + item.editorial_id + '</td>';
-        html += '    <td>' + item.tema_id + '</td>';
         html += '    <td>';
         html += '        <div class="contentButtons">';
         html += '           <button class="contentButtons__button contentButtons__button-verde" onclick="ver(' + item.id + ')">Ver</button>';
@@ -337,11 +336,46 @@ function ver(id) {
         document.getElementById('edicionLb').innerText = libro.edicion;
         document.getElementById('editorial_idLb').innerText=libro.editorial_id;
 
-        document.getElementById('autorLb').innerText = libro.descripcion;
-        document.getElementById('temaLb').innerText = libro.tema_id;
-        document.getElementById('subtemaLb').innerText = libro.subtema_id;
+        setautorr();
+        settemaa();
+        setsubtemaa();
         document.getElementsByClassName('popupControll')[1].classList.remove('popupControll-cerrar');
     }
+}
+
+function setsubtemaa(){
+    let valor = '';
+    valor += '<select class="control-input__input" name="subtemas" id="subtemas" type="text" value="" required>'
+    for (let subtema of listaSubtemas){
+        valor += '<option value ="'+subtema.id+'">'+subtema.nombre+'</option>';
+    }
+    valor+='</select>';
+    document.getElementById('subtemaLb').innerHTML=valor;
+}
+
+function settemaa(){
+    let valor = '';
+    valor += '<select class="control-input__input" name="temas" id="temas" type="text" value="" required>'
+    for (let tema of listaTemas){
+        valor += '<option value ="'+tema.id+'">'+tema.nombre+'</option>';
+    }
+    valor+='</select>';
+    document.getElementById('temaLb').innerHTML=valor;
+}
+
+function setautorr(){
+    let valor = '';
+    valor+='<fieldset>';
+    valor+='<div>';
+
+
+    for (let autor of listaAutores){
+        valor+='<select type="checkbox" name="autores" id="autores" class="autores" value="'+autor.id+'">';
+        valor+='<label for="autores">'+autor.nombre+'</label>';    
+    }
+    valor+='</div>';
+    valor+='</select>';
+    document.getElementById('autorLb').innerHTML=valor;
 }
 
 
